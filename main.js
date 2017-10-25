@@ -1,30 +1,28 @@
-
-
 function makeRequest(code) {
-	var countrylong = isoConvert(code);
+	var countrylong = isoConvert(code).toUpperCase();
 	console.log(countrylong);
 	return $.ajax({ 
-		url: 'https://tcdata360-backend.worldbank.org/api/v1/data',
+		url: 'http://api.worldbank.org/countries',
 		type: 'GET',
 		data: {
 			countries: [countrylong],
-			indicators: ["do.biz.rnk"],
-			timeframes: [2015, 2016]
+			indicators: ["3.0.Gini"],
+			format: JSON
 		}
 	});
 }
 
-function handleData(data) {
-	console.log(data);
-}
+// function handleData(data) {
+// 	console.log(data);
+// }
 
 
 function clickCountry(event, code, region) {
 	console.log(event);
 	console.log(code);
 	console.log(region);
-
-	makeRequest(code).then(handleData);
+	makeRequest(code);
+	// makeRequest(code).then(handleData);
 }
 
 function setUpMap() {
