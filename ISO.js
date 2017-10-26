@@ -253,11 +253,17 @@ var countries = [
 
 
 function isoConvert(countryshort) {
+  // the input must be a string
 	for (let i = 0; i < countries.length; i++)  {
 		var country = countries[i]
-		if (countryshort == country[0]) {
+		if (countryshort == country[0].toLowerCase()) {
 			var countrylong = country[1]
 			return countrylong;
 		};
 	};
 }
+
+test = isoConvert('ZW')
+
+console.log(test)
+

@@ -2,11 +2,22 @@
   <head>
     <title>JQVMap - World Map</title>
     <link href="./jqvmap/dist/jqvmap.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Raleway" rel="stylesheet">
+  <link href="index.css" rel="stylesheet" type="text/css" />
 
    
   </head>
   <body>
-    <div id="vmap" style="width: 600px; height: 400px;"></div>
+
+    <header>Context
+      <p class="subheader">Click on a country to learn about it's current context.</p>
+    </header>
+
+
+    <div class="map" id="vmap" style="width: 600px; height: 400px;"></div>
+
+    <div class="country-page hidden">
+    </div>
 
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
