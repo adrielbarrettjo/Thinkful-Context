@@ -22,7 +22,12 @@ header p {
 	width: 100%;
 }
 
-.country-page {
+.indicators {
+	margin-top: 100px;
+	width: 80%;
+	border: 1px black solid;
+  	padding: 20px;
+  	text-align: center;
 
 }
 
