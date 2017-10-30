@@ -101,7 +101,7 @@ function generateCountryText(data, region) {
 	const indicatorText = (`
 		<div class="indicators">
 
-			<p>In general, ${region} is considered a(n) ${incomeDescription} country in ${countryRegion}.</p>
+			<p>In general, ${region} is considered a(n) ${incomeDescription.toLowerCase()} country in ${countryRegion}.</p>
 			<p>${region} has a population of ${population}. As of ${electricityDate}, the percentage of the of the population with access 
 			to electricity is ${electrictyAccess}%. The
 			Gini Coefficient is ${giniCoefficient}. The percentage of young 
