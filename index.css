@@ -9,7 +9,8 @@ header {
   text-align: center;
 }
 
-header p {
+.subheader {
+	margin-top: 75px;
   	font-family: 'Raleway', sans-serif;
   	text-align: center;
   	font-size: 20px;
@@ -18,17 +19,24 @@ header p {
 
 .map {
 	margin: auto;
-	margin-top: 120px;
+	margin-top: 20px;
 	width: 100%;
 }
 
 .indicators {
-	margin-top: 100px;
-	width: 80%;
-	border: 1px black solid;
+	margin: 60px auto 0px auto;
+	width: 65%;
   	padding: 20px;
   	text-align: center;
+}
 
+.country-page {
+	text-align: center;
+}
+
+.country-page input {
+	margin: auto;
+	text-align: center;
 }
 
 .hidden {
