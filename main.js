@@ -91,9 +91,11 @@ function generateCountryText(data, region) {
 
 	const population = data[0][1][0].value; //data[0]
 
-	const literacy = data[1] //data[1]
+	const literacy = data[1][1]; //data[1]
 	console.log('this is literacy');
 	console.log(literacy);
+	const latestLiteracy = literacy ? literacy.find(function(item){ return item.value !== null }) : null;
+	const literacyDisplay = latestLiteracy ? latestLiteracy.value : 'not available';
 	const giniCoefficient = data[2]; //data[2]
 	const netIncome = data[3]; //data[3]
 
