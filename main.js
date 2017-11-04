@@ -1,12 +1,69 @@
 // List of Indicators used:
 // 1.1_ACCESS.ELECTRICITY.TOT
-//1.2.PSev.2.5usd
+// 1.2.PSev.2.5usd
+// GINI options: 3.2.Gini, 3.1.Gini, 3.0.Gini_nozero, 3.0.Gini
+// DT.ODA.DACD.ALLS.CD: www.oecd.org/dac/stats/idsonline: Gross ODA aid disbursement for all sectors and functions, DAC donors total (current US$)
+//IC.REG.DURS.WOMEN: how long it takes to start a business for women, http://api.worldbank.org/indicators/all?per_page=1000&page=7&format=jsonP&prefix=Getdata
+
+
+// when the user clicks on a country, the map slides over and gets smaller,
+// and the country text appears.
+// responsive feature: on a full computer, they're next to each other, or a phone
+// they're below and above.
+
+
 
 // API CALL FUNCTIONS //
+function getTEST(code) {
+
+	const test = $.ajax({ 
+		//http://api.worldbank.org/countries/az/indicators/1.2.PSev.2.5usd?format=jsonP&prefix=Getdata
+		url: 'http://api.worldbank.org/countries/'+code+'/indicators/IC.REG.DURS.WOMEN',
+		data: {
+			format: 'jsonP',
+			date: '2000:2017'
+		},
+		type: 'GET',
+		dataType: 'jsonp',
+		jsonp: 'prefix',
+	});
+	console.log(test)
+	return test;
+}
+
+function getTimeToBusiness_F(code) {
+	const timeToBusiness_F = $.ajax({ 
+		url: 'http://api.worldbank.org/countries/'+code+'/indicators/IC.REG.DURS.WOMEN',
+		data: {
+			format: 'jsonP',
+			date: '2000:2017'
+		},
+		type: 'GET',
+		dataType: 'jsonp',
+		jsonp: 'prefix',
+	});
+	console.log(timeToBusiness_F)
+	return timeToBusiness_F;
+}
+
+function getTimeToBusiness_M(code) {
+	const timeToBusiness_M = $.ajax({ 
+		url: 'http://api.worldbank.org/countries/'+code+'/indicators/IC.REG.DURS.MA',
+		data: {
+			format: 'jsonP',
+			date: '2000:2017'
+		},
+		type: 'GET',
+		dataType: 'jsonp',
+		jsonp: 'prefix',
+	});
+	console.log(timeToBusiness_M)
+	return timeToBusiness_M;
+}
+
 function getPopulation(code) {
 	console.log(code);
 	const population = $.ajax({ 
-		//http://api.worldbank.org/countries/az/indicators/1.2.PSev.2.5usd?format=jsonP&prefix=Getdata
 		url: 'http://api.worldbank.org/countries/'+code+'/indicators/SP.POP.TOTL',
 		data: {
 			format: 'jsonP',
@@ -23,7 +80,6 @@ function getPopulation(code) {
 function getElectrictyAccess(code) {
 	console.log(code);
 	const electrictyAccess = $.ajax({ 
-		//http://api.worldbank.org/countries/az/indicators/1.2.PSev.2.5usd?format=jsonP&prefix=Getdata
 		url: 'http://api.worldbank.org/countries/'+code+'/indicators/1.1_ACCESS.ELECTRICITY.TOT',
 		data: {
 			format: 'jsonP',
@@ -35,33 +91,6 @@ function getElectrictyAccess(code) {
 	});
 	console.log(electrictyAccess)
 	return electrictyAccess;
-}
-
-function getLiteracy(code) {
-	const literacy = $.ajax({ 
-		url: 'http://api.worldbank.org/countries/'+code+'/indicators/1.1_YOUTH.LITERACY.RATE',
-		type: 'GET',
-		data: {
-			format: 'jsonP',
-			date: '1950:2017'
-		},
-		dataType: 'jsonp',
-		jsonp: 'prefix'
-	});
-	console.log(literacy)
-	return literacy;
-}
-
-function getGiniCoefficient() {
-	console.log('gini ran');
-	const giniCoefficient = '1';
-	return giniCoefficient;
-}
-
-function getNetIncome() {
-	console.log('netIncome ran');
-	const netIncome = '1';
-	return netIncome;
 }
 
 function getIncomeDescription(code) {
@@ -80,35 +109,51 @@ function getIncomeDescription(code) {
 	return incomeDescription;
 }
 
+
 // GENERATE TEXT FUNCTIONS //
 
 function generateCountryText(data, region) {	
-	const incomeDescription = data[5][1][0].incomeLevel.value;//data[5]
-	const countryRegion = data[5][1][0].adminregion.value; //data[5]
-
-	const electrictyAccess = data[4][1][0].value; //data[4]
-	const electricityDate = data[4][1][0].date;
-
 	const population = data[0][1][0].value; //data[0]
+	const electrictyAccess = data[1][1][0].value; //data[1]
+	const electricityDate = data[1][1][0].date;
 
-	const literacy = data[1][1]; //data[1]
-	console.log('this is literacy');
-	console.log(literacy);
-	const latestLiteracy = literacy ? literacy.find(function(item){ return item.value !== null }) : null;
-	const literacyDisplay = latestLiteracy ? latestLiteracy.value : 'not available';
-	const giniCoefficient = data[2]; //data[2]
-	const netIncome = data[3]; //data[3]
+	const incomeDescription = data[2][1][0].incomeLevel.value;//data[2]
+	const countryRegion = data[2][1][0].adminregion.value; // from getIncomeDescription
 
-	console.log(data)
+	const timeToBusiness_F = data[3][1];
+	const latestTimeToBusiness_F = timeToBusiness_F ? timeToBusiness_F.find(function(item){ return item.value !== null }) : null;
+		console.log(latestTimeToBusiness_F);
+	const latestTimeToBusiness_FDisplay = latestTimeToBusiness_F ? latestTimeToBusiness_F.value : 'not available';
+		console.log(latestTimeToBusiness_FDisplay);
+	
+	const timeToBusinessDate = timeToBusiness_F ? timeToBusiness_F.find(function(item){ return item.year !== null }) : null;
+	const timeToBusinessDateDisplay = timeToBusinessDate.date;
+	console.log(timeToBusinessDate.date);
+
+	const timeToBusiness_M = data[4][1];
+	const latestTimeToBusiness_M = timeToBusiness_M ? timeToBusiness_M.find(function(item){ return item.value !== null }) : null;
+		console.log(latestTimeToBusiness_M);
+	const latestTimeToBusiness_MDisplay = latestTimeToBusiness_M ? latestTimeToBusiness_M.value : 'not available';
+		console.log(latestTimeToBusiness_MDisplay);
+
+
+	const test = data[5][1]; //THE TEST SPACE
+	console.log(test);
+
+
+
+
 	const indicatorText = (`
 		<div class="indicators">
 
 			<p>In general, ${region} is considered a(n) ${incomeDescription.toLowerCase()} country in ${countryRegion}.</p>
+			
 			<p>${region} has a population of ${population}. As of ${electricityDate}, the percentage of the of the population with access 
-			to electricity is ${electrictyAccess}%. The
-			Gini Coefficient is ${giniCoefficient}. The percentage of young 
-			people who are literate is ${literacy}.
-			The Net Income as a percentage of GDP is ${netIncome}. </p>
+			to electricity is ${electrictyAccess}%. </p>
+
+			<p>As of ${timeToBusinessDateDisplay}, the number of days it takes for a woman to start a business
+			is ${latestTimeToBusiness_FDisplay} (for a man, it is ${latestTimeToBusiness_MDisplay}).</p>
+
 		</div>
 
 		<input type="submit" role="button" class="back-button" alt="Go Back to Map" value="Go Back to Map">
@@ -127,20 +172,15 @@ function mapReset() {
 
 function clickCountry(event, code, region) {
 	//get all promises:
-	const electrictyAccess = getElectrictyAccess(code);
-	const literacy = getLiteracy(code);
-	const giniCoefficient = getGiniCoefficient(code);
-	const netIncome = getNetIncome(code);
-	const population = getPopulation(code);
-	const incomeDescription = getIncomeDescription(code);
-
-	// const regionInfo = getRegionInfo(code);
-	//should I write separate functions for getting region info, 
-	// or put them in one info and break out later. And if the second, how
-	// best to architect that?
+	const population = getPopulation(code); 
+	const electrictyAccess = getElectrictyAccess(code); 
+	const incomeDescription = getIncomeDescription(code); 
+	const timeToBusiness_F = getTimeToBusiness_F(code);
+	const timeToBusiness_M = getTimeToBusiness_M(code);
+	const test = getTEST(code); 
 
 	// do all API calls
-	Promise.all([population, literacy, giniCoefficient, netIncome, electrictyAccess, incomeDescription]) //add literacy at place 1
+	Promise.all([population, electrictyAccess, incomeDescription, timeToBusiness_F, timeToBusiness_M, test])
 		.then(function(data) {
 			$('.country-page').html(generateCountryText(data, region));
 		})
