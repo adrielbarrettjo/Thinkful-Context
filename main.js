@@ -156,21 +156,21 @@ function generateCountryText(data, region) {
 
 		</div>
 
-		<input type="submit" role="button" class="back-button" alt="Go Back to Map" value="Go Back to Map">
+		<input type="submit" role="button" class="back-button" alt="Reset" value="Reset">
 		`);
 	return indicatorText
 }
 
 // OTHER FUNCTIONS (event listeners, etc.)
 function mapReset() {
-	//hide indicators page and unhide map.
-	// alternative: just reload.
 	location.reload();
 
 }
 
 
 function clickCountry(event, code, region) {
+	//add loader call thing
+
 	//get all promises:
 	const population = getPopulation(code); 
 	const electrictyAccess = getElectrictyAccess(code); 
@@ -181,15 +181,17 @@ function clickCountry(event, code, region) {
 
 	// do all API calls
 	Promise.all([population, electrictyAccess, incomeDescription, timeToBusiness_F, timeToBusiness_M, test])
+		
 		.then(function(data) {
-			$('.country-page').html(generateCountryText(data, region));
+			$('.indicators-page').html(generateCountryText(data, region));
 		})
 		.then(function() {
         	//once data is appended to the dom, remove hidden class
         	$('.header').text(region);
-			$('.map').addClass('hidden');
+			// $('.map').addClass('hidden');
+			$('.map').addClass('moveToLeft');
 			$('.subheader').addClass('hidden');
-			$('.country-page').removeClass('hidden');
+			$('.indicators-page').removeClass('hidden');
 			//and enable event listener on newly generated buttons:
 			$('.country-page input').click(mapReset);
 		});
