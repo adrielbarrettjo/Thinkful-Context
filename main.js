@@ -115,6 +115,7 @@ function getIncomeDescription(code) {
 function generateCountryText(data, region) {	
 	const population = data[0][1][0].value; //data[0]
 	const electrictyAccess = data[1][1][0].value; //data[1]
+
 	const electricityDate = data[1][1][0].date;
 
 	const incomeDescription = data[2][1][0].incomeLevel.value;//data[2]
@@ -163,8 +164,8 @@ function generateCountryText(data, region) {
 
 // OTHER FUNCTIONS (event listeners, etc.)
 function mapReset() {
+	console.log('the reset ran');
 	location.reload();
-
 }
 
 
@@ -193,7 +194,7 @@ function clickCountry(event, code, region) {
 			$('.subheader').addClass('hidden');
 			$('.indicators-page').removeClass('hidden');
 			//and enable event listener on newly generated buttons:
-			$('.country-page input').click(mapReset);
+			$('.indicators-page input').click(mapReset);
 		});
 }
 
