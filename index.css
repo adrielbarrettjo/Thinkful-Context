@@ -21,15 +21,15 @@ header {
 	margin-left: 50px;
 	margin-top: 90px;
   float: left;
-  width: calc(45%); 
-  height: 400px;
+  width: calc(40vw); 
+  height: calc(40vh);
 }
 
 .indicators-page {
   display: inline-block;
 	text-align: center;
   margin: 90px 75px;
-  width: 35%;
+  width: calc(40vw)
 }
 
 .indicators input {
