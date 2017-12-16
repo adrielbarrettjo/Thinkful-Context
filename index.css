@@ -7,6 +7,7 @@ header {
   font-family: 'Oswald', sans-serif;
   font-size: 40px;
   text-align: center;
+    z-index: 100;
 }
 
 .subheader {
@@ -18,17 +19,19 @@ header {
 
 .map {
   display: inline-block;
-	margin-left: 50px;
+	/*margin-left: 50px;*/
 	margin-top: 90px;
   float: left;
   width: calc(40vw); 
-  height: calc(40vh);
+  height: calc(80vh);
 }
 
 .indicators-page {
   display: inline-block;
 	text-align: center;
-  margin: 90px 75px;
+  /*margin-top: 90px;*/
+  padding: 75px;
+  /*margin: 90px 75px;*/
   width: calc(40vw)
 }
 
@@ -39,4 +42,81 @@ header {
 
 .hidden {
   display: none;
+}
+
+
+/*@media only screen and (max-width : 700px) {*/
+    /*.indicators-page {*/
+        /*display: inline-block;*/
+        /*text-align: center;*/
+        /*padding: 75px;*/
+        /*width: calc(16vw)*/
+    /*}*/
+
+/*}*/
+
+@media only screen and (max-width : 1100px) {
+    .indicators-page {
+        display: inline-block;
+        text-align: center;
+        padding: 75px;
+        width: calc(36vw)
+    }
+
+}
+
+@media only screen and (max-width : 900px) {
+    .indicators-page {
+        display: inline-block;
+        text-align: center;
+        padding: 75px;
+        width: calc(20vw)
+    }
+
+}
+
+@media only screen and (max-width : 800px) {
+    .indicators-page {
+        display: inline-block;
+        text-align: center;
+        padding-top: 75px;
+        padding-left: 20px;
+        width: calc(90vw)
+    }
+
+    .map {
+        display: inline-block;
+        margin-left: 25px;
+        margin-top: 90px;
+        float: left;
+        width: calc(90vw);
+        height: calc(40vh);
+    }
+
+}
+
+/*@media only screen and (max-width : 700px) {*/
+    /*.indicators-page {*/
+        /*display: inline-block;*/
+        /*text-align: center;*/
+        /*padding: 75px;*/
+        /*width: calc(10vw)*/
+    /*}*/
+
+/*}*/
+
+@media only screen and (max-width : 979px) {
+
+}
+
+@media only screen and (max-width : 767px) {
+
+}
+
+@media only screen and (max-width : 480px) {
+
+}
+
+@media only screen and (max-width : 320px) {
+
 }
