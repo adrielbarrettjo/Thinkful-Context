@@ -19,7 +19,7 @@ header {
 
 .map {
   display: inline-block;
-	/*margin-left: 50px;*/
+	margin-left: 50px;
 	margin-top: 90px;
   float: left;
   width: calc(40vw); 
