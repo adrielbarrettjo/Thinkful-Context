@@ -22,7 +22,7 @@ header {
 	margin-left: 50px;
 	margin-top: 90px;
   float: left;
-  width: calc(40vw); 
+  width: calc(90vw); 
   height: calc(80vh);
 }
 
@@ -32,7 +32,7 @@ header {
   /*margin-top: 90px;*/
   padding: 75px;
   /*margin: 90px 75px;*/
-  width: calc(40vw)
+  width: calc(25vw)
 }
 
 .indicators input {
