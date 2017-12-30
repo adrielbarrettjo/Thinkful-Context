@@ -22,16 +22,14 @@ header {
 	margin-left: 50px;
 	margin-top: 90px;
   float: left;
-  width: calc(70vw); 
-  height: calc(80vh);
+  width: calc(50vw); 
+  height: calc(65vh);
 }
 
 .indicators-page {
   display: inline-block;
 	text-align: center;
-  /*margin-top: 90px;*/
   padding: 75px;
-  /*margin: 90px 75px;*/
   width: calc(25vw)
 }
 
@@ -55,6 +53,8 @@ header {
 
 /*}*/
 
+
+/**/
 @media only screen and (max-width : 1100px) {
     .indicators-page {
         display: inline-block;
@@ -75,6 +75,7 @@ header {
 
 }
 
+/*when the page is below 800px, do this:*/
 @media only screen and (max-width : 800px) {
     .indicators-page {
         display: inline-block;
