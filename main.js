@@ -18,7 +18,7 @@ function getTEST(code) {
 
 	const test = $.ajax({ 
 		//http://api.worldbank.org/countries/az/indicators/1.2.PSev.2.5usd?format=jsonP&prefix=Getdata
-		url: 'http://api.worldbank.org/countries/'+code+'/indicators/IC.REG.DURS.WOMEN',
+		url: 'https://api.worldbank.org/countries/'+code+'/indicators/IC.REG.DURS.WOMEN',
 		data: {
 			format: 'jsonP',
 			date: '2000:2017'
@@ -33,7 +33,7 @@ function getTEST(code) {
 
 function getTimeToBusiness_F(code) {
 	const timeToBusiness_F = $.ajax({ 
-		url: 'http://api.worldbank.org/countries/'+code+'/indicators/IC.REG.DURS.WOMEN',
+		url: 'https://api.worldbank.org/countries/'+code+'/indicators/IC.REG.DURS.WOMEN',
 		data: {
 			format: 'jsonP',
 			date: '2000:2017'
@@ -48,7 +48,7 @@ function getTimeToBusiness_F(code) {
 
 function getTimeToBusiness_M(code) {
 	const timeToBusiness_M = $.ajax({ 
-		url: 'http://api.worldbank.org/countries/'+code+'/indicators/IC.REG.DURS.MA',
+		url: 'https://api.worldbank.org/countries/'+code+'/indicators/IC.REG.DURS.MA',
 		data: {
 			format: 'jsonP',
 			date: '2000:2017'
@@ -64,7 +64,7 @@ function getTimeToBusiness_M(code) {
 function getPopulation(code) {
 	console.log(code);
 	const population = $.ajax({ 
-		url: 'http://api.worldbank.org/countries/'+code+'/indicators/SP.POP.TOTL',
+		url: 'https://api.worldbank.org/countries/'+code+'/indicators/SP.POP.TOTL',
 		data: {
 			format: 'jsonP',
 			date: '2000:2017'
@@ -80,7 +80,7 @@ function getPopulation(code) {
 function getElectrictyAccess(code) {
 	console.log(code);
 	const electrictyAccess = $.ajax({ 
-		url: 'http://api.worldbank.org/countries/'+code+'/indicators/1.1_ACCESS.ELECTRICITY.TOT',
+		url: 'https://api.worldbank.org/countries/'+code+'/indicators/1.1_ACCESS.ELECTRICITY.TOT',
 		data: {
 			format: 'jsonP',
 			date: '2000:2017'
@@ -97,7 +97,7 @@ function getIncomeDescription(code) {
 	//need just one API call:
 	const incomeDescription = $.ajax({ 
 		//http://api.worldbank.org/countries/az/indicators/1.2.PSev.2.5usd?format=jsonP&prefix=Getdata
-		url: 'http://api.worldbank.org/countries/'+code,
+		url: 'https://api.worldbank.org/countries/'+code,
 		data: {
 			format: 'jsonP',
 		},
