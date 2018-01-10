@@ -16,16 +16,18 @@
 // API CALL FUNCTIONS //
 function getTEST(code) {
 
+
+
 	const test = $.ajax({ 
 		//http://api.worldbank.org/countries/az/indicators/1.2.PSev.2.5usd?format=jsonP&prefix=Getdata
-		url: 'http://api.worldbank.org/countries/'+code+'/indicators/IC.REG.DURS.WOMEN',
-		data: {
-			format: 'jsonp',
-			date: '2000:2017'
-		},
+		url: 'https://adriel-proxy.herokuapp.com/countries/'+code+'/indicators/IC.REG.DURS.WOMEN?format=json',
+		// data: {
+		// 	format: 'jsonp',
+		// 	date: '2000:2017'
+		// },
 		type: 'GET',
-		dataType: 'jsonp',
-		jsonp: 'prefix',
+		dataType: 'json',
+		// jsonp: 'prefix',
 	});
 	console.log(test)
 	return test;
@@ -33,14 +35,14 @@ function getTEST(code) {
 
 function getTimeToBusiness_F(code) {
 	const timeToBusiness_F = $.ajax({ 
-		url: 'http://api.worldbank.org/countries/'+code+'/indicators/IC.REG.DURS.WOMEN',
-		data: {
-			format: 'jsonp',
-			date: '2000:2017'
-		},
+		url: 'https://adriel-proxy.herokuapp.com/countries/'+code+'/indicators/IC.REG.DURS.WOMEN?format=json',
+		// data: {
+		// 	format: 'jsonp',
+		// 	date: '2000:2017'
+		// },
 		type: 'GET',
 		dataType: 'json',
-		jsonp: 'prefix',
+		// jsonp: 'prefix',
 	});
 	console.log(timeToBusiness_F)
 	return timeToBusiness_F;
@@ -48,14 +50,14 @@ function getTimeToBusiness_F(code) {
 
 function getTimeToBusiness_M(code) {
 	const timeToBusiness_M = $.ajax({ 
-		url: 'http://api.worldbank.org/countries/'+code+'/indicators/IC.REG.DURS.MA',
-		data: {
-			format: 'jsonp',
-			date: '2000:2017'
-		},
+		url: 'https://adriel-proxy.herokuapp.com/countries/'+code+'/indicators/IC.REG.DURS.MA?format=json',
+		// data: {
+		// 	format: 'jsonp',
+		// 	date: '2000:2017'
+		// },
 		type: 'GET',
-		dataType: 'jsonp',
-		jsonp: 'prefix',
+		dataType: 'json',
+		// jsonp: 'prefix',
 	});
 	console.log(timeToBusiness_M)
 	return timeToBusiness_M;
@@ -64,14 +66,14 @@ function getTimeToBusiness_M(code) {
 function getPopulation(code) {
 	console.log(code);
 	const population = $.ajax({ 
-		url: 'http://api.worldbank.org/countries/'+code+'/indicators/SP.POP.TOTL',
-		data: {
-			format: 'jsonp',
-			date: '2000:2017'
-		},
+		url: 'https://adriel-proxy.herokuapp.com/countries/'+code+'/indicators/SP.POP.TOTL?format=json',
+		// data: {
+		// 	format: 'jsonp',
+		// 	date: '2000:2017'
+		// },
 		type: 'GET',
-		dataType: 'jsonp',
-		jsonp: 'prefix',
+		dataType: 'json',
+		// jsonp: 'prefix',
 	});
 	console.log(population)
 	return population;
@@ -80,14 +82,14 @@ function getPopulation(code) {
 function getElectrictyAccess(code) {
 	console.log(code);
 	const electrictyAccess = $.ajax({ 
-		url: 'http://api.worldbank.org/countries/'+code+'/indicators/1.1_ACCESS.ELECTRICITY.TOT',
-		data: {
-			format: 'jsonp',
-			date: '2000:2017'
-		},
+		url: 'https://adriel-proxy.herokuapp.com/countries/'+code+'/indicators/1.1_ACCESS.ELECTRICITY.TOT?format=json',
+		// data: {
+		// 	format: 'jsonp',
+		// 	date: '2000:2017'
+		// },
 		type: 'GET',
-		dataType: 'jsonp',
-		jsonp: 'prefix',
+		dataType: 'json',
+		// jsonp: 'prefix',
 	});
 	console.log(electrictyAccess)
 	return electrictyAccess;
@@ -97,13 +99,13 @@ function getIncomeDescription(code) {
 	//need just one API call:
 	const incomeDescription = $.ajax({ 
 		//http://api.worldbank.org/countries/az/indicators/1.2.PSev.2.5usd?format=jsonP&prefix=Getdata
-		url: 'http://api.worldbank.org/countries/'+code,
-		data: {
-			format: 'jsonp',
-		},
+		url: 'https://adriel-proxy.herokuapp.com/countries/'+code+'?format=json',
+		// data: {
+		// 	format: 'jsonp',
+		// },
 		type: 'GET',
-		dataType: 'jsonp',
-		jsonp: 'prefix',
+		dataType: 'json',
+		// jsonp: 'prefix',
 	});
 	console.log(incomeDescription)
 	return incomeDescription;
@@ -113,7 +115,9 @@ function getIncomeDescription(code) {
 // GENERATE TEXT FUNCTIONS //
 
 function generateCountryText(data, region) {	
-	const population = data[0][1][0].value; //data[0]
+	const population = data[0][1][1].value; //data[0]
+	console.log(data[0][1][1].value);
+
 	const electrictyAccess = data[1][1][0].value; //data[1]
 
 	const electricityDate = data[1][1][0].date;
@@ -152,8 +156,8 @@ function generateCountryText(data, region) {
 			<p>${region} has a population of ${population}. As of ${electricityDate}, the percentage of the of the population with access 
 			to electricity is ${electrictyAccess}%. </p>
 
-			<p>As of ${timeToBusinessDateDisplay}, the number of days it takes for a woman to start a business
-			is ${latestTimeToBusiness_FDisplay} (for a man, it is ${latestTimeToBusiness_MDisplay}).</p>
+			<p>As of ${timeToBusinessDateDisplay}, the number of days it took for a woman to start a business
+			is ${latestTimeToBusiness_FDisplay} (for a man, it was ${latestTimeToBusiness_MDisplay}).</p>
 
 		</div>
 
