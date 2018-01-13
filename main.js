@@ -161,10 +161,10 @@ function generateCountryText(data, region) {
 
 		</div>
 
-		<input type="submit" role="button" class="back-button" alt="Reset" value="Reset">
 		`);
 	return indicatorText
 }
+// <input type="submit" role="button" class="back-button" alt="Reset" value="Reset">
 
 // OTHER FUNCTIONS (event listeners, etc.)
 function mapReset() {
@@ -188,15 +188,18 @@ function clickCountry(event, code, region) {
 	Promise.all([population, electrictyAccess, incomeDescription, timeToBusiness_F, timeToBusiness_M, test])
 		
 		.then(function(data) {
-			$('.indicators-page').html(generateCountryText(data, region));
+			$('.indicators-page-text').html(generateCountryText(data, region));
 		})
 		.then(function() {
         	//once data is appended to the dom, remove hidden class
-        	$('.header').text(region);
+        	// $('.header').text(region);
 			// $('.map').addClass('hidden');
 			$('.map').addClass('moveToLeft');
+			
 			$('.subheader').addClass('hidden');
-			$('.indicators-page').removeClass('hidden');
+			$('.region-text').text(region);
+			$('.region-text').removeClass('hidden');
+			$('.indicators-page-text').removeClass('hidden');
 			//and enable event listener on newly generated buttons:
 			$('.indicators-page input').click(mapReset);
 		});
@@ -215,7 +218,8 @@ function onStart() {
   //calls all initializer functions.
   setUpMap();
   // set up event listener
-  $('.country-page input').click(mapReset);
+  // $('.country-page input').click(mapReset);
+  $('header').click(mapReset);
 }
 
 
