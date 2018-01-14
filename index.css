@@ -37,7 +37,9 @@ header {
 .indicators-page {
   display: inline-block;
 	text-align: center;
-  padding: 75px;
+  padding: 15px;
+  margin-left: 70px;
+  margin-top: 60px;
   width: calc(25vw);
   font-family: 'Raleway', sans-serif;
   font-size: 20px;
@@ -54,33 +56,14 @@ header {
 }
 
 
-/*@media only screen and (max-width : 700px) {*/
-    /*.indicators-page {*/
-        /*display: inline-block;*/
-        /*text-align: center;*/
-        /*padding: 75px;*/
-        /*width: calc(16vw)*/
-    /*}*/
-
-/*}*/
 
 
-/**/
-@media only screen and (max-width : 1100px) {
+/*when the page is below 1000px, do this:*/
+@media only screen and (max-width : 1000px) {
     .indicators-page {
         display: inline-block;
         text-align: center;
-        padding: 75px;
-        width: calc(36vw)
-    }
 
-}
-
-@media only screen and (max-width : 900px) {
-    .indicators-page {
-        display: inline-block;
-        text-align: center;
-        padding: 75px;
         width: calc(20vw)
     }
 
@@ -91,9 +74,9 @@ header {
     .indicators-page {
         display: inline-block;
         text-align: center;
-        padding-top: 75px;
-        padding-left: 20px;
-        width: calc(90vw)
+        width: calc(90vw);
+        margin-top: 0px;
+        margin-left: 0px;
     }
 
     .map {
@@ -107,28 +90,22 @@ header {
 
 }
 
-/*@media only screen and (max-width : 700px) {*/
-    /*.indicators-page {*/
-        /*display: inline-block;*/
-        /*text-align: center;*/
-        /*padding: 75px;*/
-        /*width: calc(10vw)*/
-    /*}*/
-
-/*}*/
-
-@media only screen and (max-width : 979px) {
+/*when the page is below 800px, do this:*/
+@media only screen and (max-width : 550px) {
+   
+    header {
+    font-size: 30px;
 
 }
 
-@media only screen and (max-width : 767px) {
+}
+
+@media only screen and (max-width : 310px) {
+   
+    header {
+    font-size: 20px;
 
 }
 
-@media only screen and (max-width : 480px) {
-
 }
 
-@media only screen and (max-width : 320px) {
-
-}
